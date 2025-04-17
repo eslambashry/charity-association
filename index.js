@@ -136,6 +136,52 @@ app.get('/', (req, res) => {
                 </div>
                 <p class="route-path">/product/:id</p>
               </li>
+              <li>
+              <li>
+                <a href="/transzction/680107b6cfd8a1e8b6d60d98">create transzction</a>
+                <div class="route-info">
+                  <span class="route-type">[POST]</span> - create a transzction
+                </div>
+                <p class="route-path">/transaction/create</p>
+              </li>
+
+                <li>
+                <a href="/transaction/all">All transactions</a>
+                <div class="route-info">
+                  <span class="route-type">[GET]</span> - View all transactions
+                </div>
+                <p class="route-path">/transaction/all</p>
+              </li>
+
+              <li>
+                <a href="/transaction/680107b6cfd8a1e8b6d60d98">Get transaction</a>
+                <div class="route-info">
+                  <span class="route-type">[GET]</span> - Get transaction details
+                </div>
+                <p class="route-path">/transaction/:id</p>
+              </li>
+              <li>
+                <a href="/transaction/680107b6cfd8a1e8b6d60d98">Update transaction</a>
+                <div class="route-info">
+                  <span class="route-type">[PUT]</span> - Update transaction info
+                </div>
+                <p class="route-path">/transaction/:id</p>
+              </li>
+              <li>
+                <a href="/transaction/680107b6cfd8a1e8b6d60d98">Delete transaction</a>
+                <div class="route-info">
+                  <span class="route-type">[DELETE]</span> - Delete a transaction
+                </div>
+                <p class="route-path">/transaction/:id</p>
+              </li>
+
+              <li>
+                <a href="/inventory/all">All inventorys</a>
+                <div class="route-info">
+                  <span class="route-type">[GET]</span> - View all inventorys
+                </div>
+                <p class="route-path">/inventory/all</p>
+              </li>
             </ul>
           </body>
         </html>

@@ -5,6 +5,6 @@ import * as inventoryRoutertCont from './inventory.controller.js'
 const inventoryRouter = Router()
 
 
-inventoryRouter.get('/', inventoryRoutertCont.getInventory);
+inventoryRouter.get('/all', inventoryRoutertCont.getInventory);
 
 export default inventoryRouter
