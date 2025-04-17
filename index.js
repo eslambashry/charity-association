@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
   
           a {
             text-decoration: none;
-            color: white;
+            color: black;
             padding: 10px 20px;
             border-radius: 8px;
             display: inline-block;
