@@ -10,6 +10,7 @@ import userRouter from './src/modules/auth/auth.routes.js';
 import productRouter from './src/modules/product/product.routes.js';
 import transactionRouter from './src/modules/transaction/transaction.routes.js';
 import inventoryRouter from './src/modules/inventory/inventory.routes.js';
+import caseRoutes from './src/modules/case/case.routes.js';
 
 
 const app = express();
@@ -234,6 +235,7 @@ app.use('/user',userRouter)
 app.use('/product',productRouter)
 app.use('/transaction',transactionRouter)
 app.use('/inventory',inventoryRouter)
+app.use('/cases', caseRoutes);
 
  
 
