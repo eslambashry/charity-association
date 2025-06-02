@@ -222,6 +222,76 @@ app.get('/', (req, res) => {
                 <span class="route-type">[GET]</span> - View all inventories
               </div>
               <p class="route-path">/inventory/all</p>
+              </li>
+              <li>
+              <a href="/inventory/680107b6cfd8a1e8b6d60d98">Get Inventory</a>
+              <div class="route-info">
+              <span class="route-type">[GET]</span> - Get inventory details
+              </div>
+              <p class="route-path">/inventory/:id</p>
+              </li>
+              <li>
+              <a href="/inventory/create">Create Inventory</a>
+              <div class="route-info">
+              <span class="route-type">[POST]</span> - Create a new inventory
+              </div>
+              <p class="route-path">/inventory/create</p>
+              </li>
+              <li>
+              <a href="/inventory/680107b6cfd8a1e8b6d60d98">Update Inventory</a>
+              <div class="route-info">
+              <span class="route-type">[PUT]</span> - Update inventory info
+              </div>
+              <p class="route-path">/inventory/:id</p>
+              </p>
+              </li>
+              <li>
+              <a href="/inventory/680107b6cfd8a1e8b6d60d98">Delete Inventory</a>
+              <div class="route-info">
+              <span class="route-type">[DELETE]</span> - Delete an inventory
+              </div>
+              <p class="route-path">/inventory/:id</p>
+              </li>
+              >
+              </html>
+            <li>
+              <a href="/cases">Cases</a>
+              <div class="route-info
+              <span class="route-type">[GET]</span> - View all cases
+              </div>
+              <p class="route-path">/cases</p>
+              li>
+              i>
+              <a href="/cases/680107b6cfd8a1e8b6d60d98">Get Case</a>
+              <div class="route-info">
+              <span class="route-type">[GET]</span> - Get case details
+              </div>
+              <p class="route-path">/cases/:id</p>
+              </li>
+              <li>
+              <a href="/cases/create">Create Case</a>
+              <div class="route-info">
+              <span class="route-type">[  POST]</span> - Create a new case
+              </div>
+              <p class="route-path">/cases/create</p>
+              </li>
+              <li>
+              <a href="/cases/680107b6cfd8a1e8b6d60d98">Update Case</a>
+              <div class="route-info">
+              <span class="route-type">[PUT]</span> - Update case info
+              </div>
+              <p class="route-path">/cases/:id</p>
+              </li>
+              <li>
+              <a href="/cases/680107b6cfd8a1e8b6d60d98">Delete Case</a>
+              <div class="route-info">
+              <span class="route-type">[DELETE]</span> - Delete a case
+              </div>
+              <p class="route-path">/cases/:id</p>
+              </li>
+              </ul>
+              </div>
+
             </li>
           </ul>
         </div>
