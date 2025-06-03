@@ -289,7 +289,7 @@ app.get('/', (req, res) => {
               </div>
               <p class="route-path">/cases/:id</p>
               </li>
-              </ul>
+              <t/ul>
               </div>
 
             </li>
