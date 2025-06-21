@@ -10,7 +10,7 @@ const caseSchema = new Schema({
   },
   childrenCount: { type: Number, default: 0, min: 0 },
   classification: {
-    type: String,
+    type: String, 
     enum: ['orphans', 'A', 'B'],
     required: true
   },
