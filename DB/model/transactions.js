@@ -10,3 +10,5 @@ const transactionSchema = new Schema({
 }, { timestamps: true });
 
 export const transaction = model('transaction', transactionSchema);
+
+

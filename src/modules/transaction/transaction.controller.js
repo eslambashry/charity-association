@@ -32,13 +32,13 @@ export const createTransaction = async (req, res) => {
 
     // تحديث أو إنشاء سجل الجرد
     if (!inventory) {
-      inventory = new Inventory({ product: product_id, quantity: 0 });
+      inventory = new Inventory({ product: product_id, volume: 0 });
     }
 
     if (type === 'in') {
-      inventory.quantity += quantity;
+      inventory.volume.quantity += quantity;
     } else if (type === 'out') {
-      inventory.quantity -= quantity;
+      inventory.volume.quantity -= quantity;
     }
 
     inventory.last_updated = new Date();
