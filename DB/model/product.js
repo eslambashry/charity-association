@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 
 const productSchema = new Schema({
   name: { type: String, required: true },
-  category: { type: String, enum: ['food', 'household', 'appliances', 'clothing', 'other'], default: 'food' },
+  category: { type: String, enum: ['مواد غذائية','مواد غير غذائية'],},
   unit: { type: String, required: true }, // كيلو، لتر، عبوة، كرتونة، شكارة...
   unitDescription: { type: String }, // وصف تفصيلي للوحدة، مثل: "كرتونة تحتوي على 6 زجاجات"
   subunitQuantity: { type: Number }, // كمية الوحدات الفرعية في الوحدة الرئيسية
