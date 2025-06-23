@@ -1,7 +1,7 @@
-import { Case } from "../../../DB/model/case.js";
+import { beneficiary } from "../../../DB/model/beneficiary.js";
 
-// ✅ Create Case
-export const createCase = async (req, res) => {
+// ✅ Create beneficiary
+export const createbeneficiary = async (req, res) => {
   try {
     const { 
       fullName, 
@@ -28,7 +28,7 @@ export const createCase = async (req, res) => {
     }
 
     // إنشاء الحالة الجديدة
-    const newCase = new Case({
+    const newbeneficiary = new beneficiary({
       fullName,
       birthDate,
       maritalStatus,
@@ -38,15 +38,15 @@ export const createCase = async (req, res) => {
       isActive: isActive !== undefined ? isActive : true
     });
 
-    const savedCase = await newCase.save();
-    res.status(201).json(savedCase);
+    const savedbeneficiary = await newbeneficiary.save();
+    res.status(201).json(savedbeneficiary);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
 
-// ✅ Read All Cases
-export const getCases = async (req, res) => {
+// ✅ Read All beneficiarys
+export const getbeneficiarys = async (req, res) => {
   try {
     const { 
       classification, 
@@ -69,20 +69,20 @@ export const getCases = async (req, res) => {
     const sortOptions = {};
     sortOptions[sortBy] = sortOrder === 'asc' ? 1 : -1;
 
-    const cases = await Case.find(filter)
+    const beneficiarys = await beneficiary.find(filter)
       .sort(sortOptions)
       .skip(skip)
       .limit(parseInt(limit));
 
-    const totalCases = await Case.countDocuments(filter);
-    const totalPages = Math.ceil(totalCases / parseInt(limit));
+    const totalbeneficiarys = await beneficiary.countDocuments(filter);
+    const totalPages = Math.ceil(totalbeneficiarys / parseInt(limit));
 
     res.json({
-      cases,
+      beneficiarys,
       pagination: {
         currentPage: parseInt(page),
         totalPages,
-        totalCases,
+        totalbeneficiarys,
         hasNextPage: parseInt(page) < totalPages,
         hasPrevPage: parseInt(page) > 1
       }
@@ -92,24 +92,24 @@ export const getCases = async (req, res) => {
   }
 };
 
-// ✅ Read One Case
-export const getCaseById = async (req, res) => {
+// ✅ Read One beneficiary
+export const getbeneficiaryById = async (req, res) => {
   try {
-    const caseData = await Case.findById(req.params.id);
-    if (!caseData) {
-      return res.status(404).json({ error: 'Case not found' });
+    const beneficiaryData = await beneficiary.findById(req.params.id);
+    if (!beneficiaryData) {
+      return res.status(404).json({ error: 'beneficiary not found' });
     }
-    res.json(caseData);
+    res.json(beneficiaryData);
   } catch (err) {
     if (err.name === 'CastError') {
-      return res.status(400).json({ error: 'Invalid case ID format' });
+      return res.status(400).json({ error: 'Invalid beneficiary ID format' });
     }
     res.status(500).json({ error: err.message });
   }
 };
 
-// ✅ Update Case
-export const updateCase = async (req, res) => {
+// ✅ Update beneficiary
+export const updatebeneficiary = async (req, res) => {
   try {
     const { 
       fullName, 
@@ -137,114 +137,114 @@ export const updateCase = async (req, res) => {
     if (notes !== undefined) updateData.notes = notes;
     if (isActive !== undefined) updateData.isActive = isActive;
 
-    const updatedCase = await Case.findByIdAndUpdate(
+    const updatedbeneficiary = await beneficiary.findByIdAndUpdate(
       req.params.id,
       updateData,
       { new: true, runValidators: true }
     );
 
-    if (!updatedCase) {
-      return res.status(404).json({ error: 'Case not found' });
+    if (!updatedbeneficiary) {
+      return res.status(404).json({ error: 'beneficiary not found' });
     }
 
-    res.json(updatedCase);
+    res.json(updatedbeneficiary);
   } catch (err) {
     if (err.name === 'CastError') {
-      return res.status(400).json({ error: 'Invalid case ID format' });
+      return res.status(400).json({ error: 'Invalid beneficiary ID format' });
     }
     res.status(400).json({ error: err.message });
   }
 };
 
-// ✅ Delete Case (Soft Delete)
-export const deleteCase = async (req, res) => {
+// ✅ Delete beneficiary (Soft Delete)
+export const deletebeneficiary = async (req, res) => {
   try {
-    const deletedCase = await Case.findByIdAndUpdate(
+    const deletedbeneficiary = await beneficiary.findByIdAndUpdate(
       req.params.id,
       { isActive: false },
       { new: true }
     );
 
-    if (!deletedCase) {
-      return res.status(404).json({ error: 'Case not found' });
+    if (!deletedbeneficiary) {
+      return res.status(404).json({ error: 'beneficiary not found' });
     }
 
     res.json({ 
-      message: 'Case deactivated successfully',
-      case: deletedCase 
+      message: 'beneficiary deactivated successfully',
+      beneficiary: deletedbeneficiary 
     });
   } catch (err) {
     if (err.name === 'CastError') {
-      return res.status(400).json({ error: 'Invalid case ID format' });
+      return res.status(400).json({ error: 'Invalid beneficiary ID format' });
     }
     res.status(500).json({ error: err.message });
   }
 };
 
-// ✅ Permanently Delete Case
-export const permanentDeleteCase = async (req, res) => {
+// ✅ Permanently Delete beneficiary
+export const permanentDeletebeneficiary = async (req, res) => {
   try {
-    const deletedCase = await Case.findByIdAndDelete(req.params.id);
+    const deletedbeneficiary = await beneficiary.findByIdAndDelete(req.params.id);
     
-    if (!deletedCase) {
-      return res.status(404).json({ error: 'Case not found' });
+    if (!deletedbeneficiary) {
+      return res.status(404).json({ error: 'beneficiary not found' });
     }
 
-    res.json({ message: 'Case permanently deleted successfully' });
+    res.json({ message: 'beneficiary permanently deleted successfully' });
   } catch (err) {
     if (err.name === 'CastError') {
-      return res.status(400).json({ error: 'Invalid case ID format' });
+      return res.status(400).json({ error: 'Invalid beneficiary ID format' });
     }
     res.status(500).json({ error: err.message });
   }
 };
 
-// ✅ Restore Case
-export const restoreCase = async (req, res) => {
+// ✅ Restore beneficiary
+export const restorebeneficiary = async (req, res) => {
   try {
-    const restoredCase = await Case.findByIdAndUpdate(
+    const restoredbeneficiary = await beneficiary.findByIdAndUpdate(
       req.params.id,
       { isActive: true },
       { new: true }
     );
 
-    if (!restoredCase) {
-      return res.status(404).json({ error: 'Case not found' });
+    if (!restoredbeneficiary) {
+      return res.status(404).json({ error: 'beneficiary not found' });
     }
 
     res.json({ 
-      message: 'Case restored successfully',
-      case: restoredCase 
+      message: 'beneficiary restored successfully',
+      beneficiary: restoredbeneficiary 
     });
   } catch (err) {
     if (err.name === 'CastError') {
-      return res.status(400).json({ error: 'Invalid case ID format' });
+      return res.status(400).json({ error: 'Invalid beneficiary ID format' });
     }
     res.status(500).json({ error: err.message });
   }
 };
 
-// ✅ Get Cases Statistics
-export const getCasesStatistics = async (req, res) => {
+// ✅ Get beneficiarys Statistics
+export const getbeneficiarysStatistics = async (req, res) => {
   try {
-    const totalCases = await Case.countDocuments();
-    const activeCases = await Case.countDocuments({ isActive: true });
-    const inactiveCases = await Case.countDocuments({ isActive: false });
+    const totalbeneficiarys = await beneficiary.countDocuments();
+    const activebeneficiarys = await beneficiary.countDocuments({ isActive: true });
+    const inactivebeneficiarys = await beneficiary.countDocuments({ isActive: false });
 
     // إحصائيات التصنيف
-    const classificationStats = await Case.aggregate([
+    const classificationStats = await beneficiary.aggregate([
       { $match: { isActive: true } },
       { $group: { _id: '$classification', count: { $sum: 1 } } }
     ]);
 
     // إحصائيات الحالة الاجتماعية
-    const maritalStatusStats = await Case.aggregate([
+    const maritalStatusStats = await beneficiary.aggregate([
       { $match: { isActive: true } },
       { $group: { _id: '$maritalStatus', count: { $sum: 1 } } }
     ]);
 
     // إحصائيات الأطفال
-    const childrenStats = await Case.aggregate([
+    const childrenStats = await beneficiary.aggregate([
       { $match: { isActive: true } },
       {
         $group: {
@@ -257,9 +257,9 @@ export const getCasesStatistics = async (req, res) => {
     ]);
 
     res.json({
-      totalCases,
-      activeCases,
-      inactiveCases,
+      totalbeneficiarys,
+      activebeneficiarys,
+      inactivebeneficiarys,
       classificationStats,
       maritalStatusStats,
       childrenStats: childrenStats[0] || { totalChildren: 0, avgChildren: 0, maxChildren: 0 }
@@ -269,8 +269,8 @@ export const getCasesStatistics = async (req, res) => {
   }
 };
 
-// ✅ Search Cases
-export const searchCases = async (req, res) => {
+// ✅ Search beneficiarys
+export const searchbeneficiarys = async (req, res) => {
   try {
     const { query, classification, maritalStatus, isActive = true } = req.query;
 
@@ -286,14 +286,14 @@ export const searchCases = async (req, res) => {
     if (classification) searchFilter.classification = classification;
     if (maritalStatus) searchFilter.maritalStatus = maritalStatus;
 
-    const cases = await Case.find(searchFilter)
+    const beneficiarys = await beneficiary.find(searchFilter)
       .sort({ fullName: 1 })
       .limit(20);
 
     res.json({
       query,
-      results: cases,
-      count: cases.length
+      results: beneficiarys,
+      count: beneficiarys.length
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

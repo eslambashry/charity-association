@@ -10,7 +10,8 @@ import userRouter from './src/modules/auth/auth.routes.js';
 import productRouter from './src/modules/product/product.routes.js';
 import transactionRouter from './src/modules/transaction/transaction.routes.js';
 import inventoryRouter from './src/modules/inventory/inventory.routes.js';
-import caseRoutes from './src/modules/case/case.routes.js';
+import beneficiaryRoutes from './src/modules/beneficiary/beneficiary.routes.js';
+import distributionRouter from './src/modules/distribution/distripution.routes.js';
 
 
 const app = express();
@@ -255,39 +256,39 @@ app.get('/', (req, res) => {
               >
               </html>
             <li>
-              <a href="/cases">Cases</a>
+              <a href="/beneficiarys">beneficiarys</a>
               <div class="route-info
-              <span class="route-type">[GET]</span> - View all cases
+              <span class="route-type">[GET]</span> - View all beneficiarys
               </div>
-              <p class="route-path">/cases</p>
+              <p class="route-path">/beneficiarys</p>
               li>
               i>
-              <a href="/cases/680107b6cfd8a1e8b6d60d98">Get Case</a>
+              <a href="/beneficiarys/680107b6cfd8a1e8b6d60d98">Get beneficiary</a>
               <div class="route-info">
-              <span class="route-type">[GET]</span> - Get case details
+              <span class="route-type">[GET]</span> - Get beneficiary details
               </div>
-              <p class="route-path">/cases/:id</p>
+              <p class="route-path">/beneficiarys/:id</p>
               </li>
               <li>
-              <a href="/cases/create">Create Case</a>
+              <a href="/beneficiarys/create">Create beneficiary</a>
               <div class="route-info">
-              <span class="route-type">[  POST]</span> - Create a new case
+              <span class="route-type">[  POST]</span> - Create a new beneficiary
               </div>
-              <p class="route-path">/cases/create</p>
+              <p class="route-path">/beneficiarys/create</p>
               </li>
               <li>
-              <a href="/cases/680107b6cfd8a1e8b6d60d98">Update Case</a>
+              <a href="/beneficiarys/680107b6cfd8a1e8b6d60d98">Update beneficiary</a>
               <div class="route-info">
-              <span class="route-type">[PUT]</span> - Update case info
+              <span class="route-type">[PUT]</span> - Update beneficiary info
               </div>
-              <p class="route-path">/cases/:id</p>
+              <p class="route-path">/beneficiarys/:id</p>
               </li>
               <li>
-              <a href="/cases/680107b6cfd8a1e8b6d60d98">Delete Case</a>
+              <a href="/beneficiarys/680107b6cfd8a1e8b6d60d98">Delete beneficiary</a>
               <div class="route-info">
-              <span class="route-type">[DELETE]</span> - Delete a case
+              <span class="route-type">[DELETE]</span> - Delete a beneficiary
               </div>
-              <p class="route-path">/cases/:id</p>
+              <p class="route-path">/beneficiarys/:id</p>
               </li>
               <t/ul>
               </div>
@@ -305,7 +306,9 @@ app.use('/user',userRouter)
 app.use('/product',productRouter)
 app.use('/transaction',transactionRouter)
 app.use('/inventory',inventoryRouter)
-app.use('/cases', caseRoutes);
+app.use('/beneficiarys', beneficiaryRoutes);
+app.use('/distribution', distributionRouter)
+
 
  
 

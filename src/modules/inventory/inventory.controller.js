@@ -48,11 +48,13 @@ export const createInventory = async (req, res) => {
 export const updateInventory = async (req, res) => {
   try {
     const { id } = req.params;
-    const { product, quantity } = req.body;
+    const { product } = req.body;
+    const quantity = req.body.volume?.quantity;
+    const unit = req.body.volume?.unit;
 
     const updatedInventory = await Inventory.findByIdAndUpdate(
       id,
-      { product, quantity },
+      { product, volume: { quantity, unit } },
       { new: true, runValidators: true }
     );
 

@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-const caseSchema = new Schema({
+const beneficiarySchema = new Schema({
   fullName: { type: String, required: true, trim: true }, // الاسم الرباعي
   birthDate: { type: Date, required: true },
   maritalStatus: {
@@ -19,8 +19,8 @@ const caseSchema = new Schema({
 }, { timestamps: true });
 
 // إضافة فهرس للبحث السريع
-caseSchema.index({ fullName: 'text' });
-caseSchema.index({ classification: 1, isActive: 1 });
-caseSchema.index({ maritalStatus: 1, isActive: 1 });
+beneficiarySchema.index({ fullName: 'text' });
+beneficiarySchema.index({ classification: 1, isActive: 1 });
+beneficiarySchema.index({ maritalStatus: 1, isActive: 1 });
 
-export const Case = model('case', caseSchema);
+export const beneficiary = model('beneficiary', beneficiarySchema);
